@@ -1,6 +1,7 @@
 #include <iostream>
 #include <conio.h>
 #include "globals.h"
+#include <vector>
 using namespace std;
 
 enum main_states
@@ -18,6 +19,7 @@ int main() {
 	int main_return = EXIT_FAILURE;
 	main_states state = MAIN_CREATION;
 	string intputLine;
+	vector<string> tokens;
 	bool isEndLine = false;
 
 	while (state != MAIN_EXIT)
@@ -25,7 +27,9 @@ int main() {
 		UpdateInput(intputLine, isEndLine);
 		if(isEndLine)
 		{
-			
+			isEndLine = false;
+			Tokenize(intputLine, tokens);
+			intputLine = "";
 		}
 	}
 

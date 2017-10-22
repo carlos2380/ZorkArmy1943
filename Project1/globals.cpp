@@ -32,3 +32,25 @@ void UpdateInput(string &intputLine, bool &isEndLine)
 		}
 	}
 }
+
+void Tokenize(const string& line, vector<string>& tokens)
+{
+	string token = "";
+
+	for(int i = 0; i < line[i]; ++i)
+	{
+		if(line[i] != ' ')
+		{
+			if(64 < line[i] && line[i] < 91) token += line[i];
+			else token += line[i];
+		}
+		else if(token != "")
+		{
+			tokens.push_back(token);
+			token = "";
+		}
+	}
+
+	if (token != "")tokens.push_back(token);
+
+}
