@@ -41,7 +41,7 @@ void Tokenize(const string& line, vector<string>& tokens)
 	{
 		if(line[i] != ' ')
 		{
-			if(64 < line[i] && line[i] < 91) token += line[i];
+			if(64 < line[i] && line[i] < 91) token += line[i] + 32;
 			else token += line[i];
 		}
 		else if(token != "")
