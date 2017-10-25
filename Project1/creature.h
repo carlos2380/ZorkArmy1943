@@ -1,13 +1,17 @@
-#include "entity.h"
+#ifndef __Creature__
+#define __Creature__
 
-class room;
-class creature : public entity
+#include "Entity.h"
+
+class Room;
+class Creature : public Entity
 {
 public:
-	creature();
-	virtual ~creature();
+	Creature();
+	virtual ~Creature();
 
 private:
-	room* location;
+	Room* location;
 };
 
+#endif

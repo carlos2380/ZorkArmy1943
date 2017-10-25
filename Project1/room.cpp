@@ -1,12 +1,17 @@
-#include "room.h"
+#include "Room.h"
 
 
 
-room::room()
+Room::Room()
 {
 }
 
+Room::Room(const char* name, const char* description) : Entity(name, description)
+{
 
-room::~room()
+}
+
+
+Room::~Room()
 {
 }

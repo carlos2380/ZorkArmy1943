@@ -1,12 +1,12 @@
-#include "ncp.h"
+#include "Ncp.h"
 
 
 
-ncp::ncp()
+Ncp::Ncp()
 {
 }
 
 
-ncp::~ncp()
+Ncp::~Ncp()
 {
 }

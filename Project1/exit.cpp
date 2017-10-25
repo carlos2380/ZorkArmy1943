@@ -1,12 +1,12 @@
-#include "exit.h"
+#include "Exit.h"
 
 
 
-exit::exit()
+Exit::Exit()
 {
 }
 
 
-exit::~exit()
+Exit::~Exit()
 {
 }

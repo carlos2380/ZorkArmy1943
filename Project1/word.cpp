@@ -1,12 +1,12 @@
-#include "word.h"
+#include "Word.h"
 
 
 
-word::word()
+Word::Word()
 {
 }
 
 
-word::~word()
+Word::~Word()
 {
 }

@@ -1,12 +1,12 @@
-#include "creature.h"
+#include "Creature.h"
 
 
 
-creature::creature()
+Creature::Creature()
 {
 }
 
 
-creature::~creature()
+Creature::~Creature()
 {
 }

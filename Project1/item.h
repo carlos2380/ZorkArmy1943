@@ -1,9 +1,13 @@
-#include "entity.h"
+#ifndef __Item__
+#define __Item__
 
-class item : public entity
+#include "Entity.h"
+
+class Item : public Entity
 {
 public:
-	item();
-	~item();
+	Item();
+	~Item();
 };
 
+#endif

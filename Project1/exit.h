@@ -1,11 +1,15 @@
-#include "entity.h"
+#ifndef __Exit__
+#define __Exit__
+
+
+#include "Entity.h"
 
 class Room;
-class exit : public entity
+class Exit : public Entity
 {
 public:
-	exit();
-	~exit();
+	Exit();
+	~Exit();
 
 private:
 	enum direction;
@@ -13,3 +17,4 @@ private:
 	Room* destination;
 };
 
+#endif

@@ -1,12 +1,15 @@
-#include "entity.h"
+#include "Entity.h"
 
 
 
-entity::entity()
+Entity::Entity()
 {
 }
 
+Entity::Entity(const char* name, const char* description) : name(name), description(description)
+{
+}
 
-entity::~entity()
+Entity::~Entity()
 {
 }

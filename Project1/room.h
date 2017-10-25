@@ -1,9 +1,17 @@
-#include "entity.h"
+#ifndef __Room__
+#define __Room__
 
-class room : public entity
+#include "Entity.h"
+
+class Room : public Entity
 {
 public:
-	room();
-	~room();
+	Room();
+	Room(const char* name, const char* description);
+	~Room();
+
+private:
 };
+
+#endif
 

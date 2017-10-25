@@ -1,14 +1,18 @@
+#ifndef __World__
+#define __World__
+
 #include<vector>
 using namespace std;
 
-class entity;
-class word
+class Entity;
+class Word
 {
 public:
-	word();
-	~word();
+	Word();
+	~Word();
 
 private:
-	vector<entity*> entities;
+	vector<Entity*> entities;
 };
 
+#endif

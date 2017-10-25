@@ -1,12 +1,12 @@
-#include "player.h"
+#include "Player.h"
 
 
 
-player::player()
+Player::Player()
 {
 }
 
 
-player::~player()
+Player::~Player()
 {
 }

@@ -1,9 +1,13 @@
-#include "creature.h"
+#ifndef __Player__
+#define __Player__
 
-class player : public creature
+#include "Creature.h"
+
+class Player : public Creature
 {
 public:
-	player();
-	~player();
+	Player();
+	~Player();
 };
 
+#endif

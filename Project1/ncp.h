@@ -1,12 +1,17 @@
-#include "creature.h"
+#ifndef __NCP__
+#define __NCP__
 
-class ncp : public creature
+#include "Creature.h"
+
+class Ncp : public Creature
 {
 public:
-	ncp();
-	~ncp();
+	Ncp();
+	~Ncp();
 
 private:
 	enum st_step;
 };
+
+#endif
 

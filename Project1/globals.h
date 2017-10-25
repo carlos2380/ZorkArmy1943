@@ -12,4 +12,4 @@ void Tokenize(const string& line, vector<string>& tokens);
 #define SCREEN_WIDTH 384
 
 
-#endif //__GLOBALS_H__
+#endif
