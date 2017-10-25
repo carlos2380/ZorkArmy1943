@@ -8,7 +8,7 @@ public:
 	entity();
 	virtual ~entity();
 
-	virtual void Update();
+	//virtual void Update();
 
 private:
 	enum type;
