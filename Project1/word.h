@@ -12,7 +12,7 @@ public:
 	~Word();
 
 private:
-	vector<Entity*> entities;
+	vector<Entity*> zones;
 };
 
 #endif

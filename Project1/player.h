@@ -8,6 +8,11 @@ class Player : public Creature
 public:
 	Player();
 	~Player();
+
+	Room* GetRoom();
+	void SetRoom(Room &room);
+private:
+	Room* room;
 };
 
 #endif

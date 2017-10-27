@@ -11,6 +11,7 @@ public:
 	~Room();
 
 private:
+
 };
 
 #endif
