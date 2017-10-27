@@ -13,10 +13,11 @@ public:
 	virtual ~Entity();
 	//virtual void Update();
 
-private:
-	enum type;
+protected:
 	string name;
 	string description;
+private:
+	enum type;
 	list<Entity*> contains;
 };
 

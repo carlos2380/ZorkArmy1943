@@ -11,6 +11,8 @@ public:
 
 	Room* GetRoom();
 	void SetRoom(Room &room);
+
+	void Look();
 private:
 	Room* room;
 };

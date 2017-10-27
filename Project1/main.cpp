@@ -5,6 +5,7 @@
 #include "entity.h"
 #include "Room.h"
 #include "Player.h"
+#include "world.h"
 using namespace std;
 
 enum main_states
@@ -20,16 +21,12 @@ enum main_states
 int main() {
 
 	int main_return = EXIT_FAILURE;
+	World word;
 	main_states state = MAIN_CREATION;
 	string intputLine;
 	vector<string> tokens;
 	bool isEndLine = false;
 
-	/*vector<Entity*> detodo;
-	Room* a = new Room();
-	Player* p = new Player();
-	detodo.push_back(a);
-	detodo.push_back(p);*/
 	while (state != MAIN_EXIT)
 	{
 		UpdateInput(intputLine, isEndLine);
@@ -37,7 +34,10 @@ int main() {
 		{
 			isEndLine = false;
 			Tokenize(intputLine, tokens);
+			word.ParseCommand(tokens);
+			tokens.clear();
 			intputLine = "";
+			cout << "> ";
 		}
 	}
 

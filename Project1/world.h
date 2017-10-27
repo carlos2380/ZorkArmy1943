@@ -5,14 +5,16 @@
 using namespace std;
 
 class Entity;
-class Word
+class Player;
+class World
 {
 public:
-	Word();
-	~Word();
-
+	World();
+	~World();
+	void ParseCommand(vector<string>& tokens);
 private:
 	vector<Entity*> zones;
+	Player* player = nullptr;
 };
 
 #endif

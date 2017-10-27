@@ -120,7 +120,7 @@
     <ClCompile Include="ncp.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="room.cpp" />
-    <ClCompile Include="word.cpp" />
+    <ClCompile Include="world.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="creature.h" />
@@ -131,7 +131,7 @@
     <ClInclude Include="ncp.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />
-    <ClInclude Include="word.h" />
+    <ClInclude Include="world.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
