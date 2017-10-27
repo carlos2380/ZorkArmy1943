@@ -13,3 +13,8 @@ Entity::Entity(const char* name, const char* description) : name(name), descript
 Entity::~Entity()
 {
 }
+
+EntityType Entity::GetType() const
+{
+	return ENTITY_TYPE;
+}

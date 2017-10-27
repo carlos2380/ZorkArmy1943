@@ -6,8 +6,10 @@
 
 World::World()
 {
-	Room* airplane = new Room("Zone A", "you are in one airplane");
+	Room* airplane = new Room("Airplain", "you are in one airplane");
+	Room* zoneA = new Room("Zone A", "you are in one airplane");
 	zones.push_back(airplane);
+	zones.push_back(zoneA);
 	player = new Player();
 	player->SetRoom(*airplane);
 

@@ -11,6 +11,11 @@ Player::~Player()
 {
 }
 
+EntityType Entity::GetType() const
+{
+	return ROOM_TYPE;
+}
+
 Room* Player::GetRoom()
 {
 	return room;
