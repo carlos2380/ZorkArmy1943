@@ -10,7 +10,8 @@ enum EntityType
 	ENTITY_TYPE,
 	ROOM_TYPE,
 	EXIT_TYPE,
-	PLAYER_TYPE
+	PLAYER_TYPE,
+	PLACE_TYPE
 };
 
 class Entity
