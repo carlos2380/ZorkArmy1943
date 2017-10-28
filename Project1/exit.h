@@ -10,7 +10,7 @@ class Exit : public Entity
 public:
 	Exit();
 	~Exit();
-
+	EntityType GetType();
 private:
 	enum direction;
 	Room* source;

@@ -9,6 +9,7 @@ public:
 	Room();
 	Room(const char* name, const char* description);
 	~Room();
+	EntityType GetType();
 
 	void Look();
 private:

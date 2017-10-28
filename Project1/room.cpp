@@ -16,7 +16,7 @@ Room::~Room()
 {
 }
 
-EntityType Entity::GetType() const
+EntityType Room::GetType()
 {
 	return ROOM_TYPE;
 }

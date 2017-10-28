@@ -19,7 +19,7 @@ public:
 	Entity();
 	Entity(const char* name, const char* description);
 	virtual ~Entity();
-	EntityType GetType() const;
+	virtual EntityType GetType();
 
 	//virtual void Update();
 

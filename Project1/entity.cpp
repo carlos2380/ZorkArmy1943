@@ -14,7 +14,7 @@ Entity::~Entity()
 {
 }
 
-EntityType Entity::GetType() const
+EntityType Entity::GetType()
 {
 	return ENTITY_TYPE;
 }

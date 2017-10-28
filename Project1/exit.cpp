@@ -11,7 +11,7 @@ Exit::~Exit()
 {
 }
 
-EntityType Entity::GetType() const
+EntityType Exit::GetType()
 {
 	return EXIT_TYPE;
 }
