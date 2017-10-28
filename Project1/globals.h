@@ -11,5 +11,6 @@ void Tokenize(const string& line, vector<string>& tokens);
 //Variables
 #define SCREEN_WIDTH 384
 
-
+//Sentences
+static string FOREST = "forest";
 #endif

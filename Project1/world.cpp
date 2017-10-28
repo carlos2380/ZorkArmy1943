@@ -4,12 +4,13 @@
 #include <iostream>
 #include "exit.h"
 #include "place.h"
+#include "globals.h"
 
 
 World::World()
 {
 	Place* tree = new Place("tree", "There are big parachute colgando de un arbol", "You are enganxado con el paracaidas colgando del arbol ", 0, false);
-	Place* forest = new Place("forest", "Alote forest", "Tou are in the Forest", 0, true);
+	Place* forest = new Place(&FOREST[0], "Alote forest", "Tou are in the Forest", 0, true);
 	vector<Place*> placesZoneA;
 	placesZoneA.push_back(tree);
 	placesZoneA.push_back(forest);

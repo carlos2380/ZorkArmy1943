@@ -3,6 +3,16 @@
 
 #include "Entity.h"
 
+enum CretureStat
+{
+	WALKING,
+	CROUCHING,
+	SITTING,
+	SMOKING,
+	STANDING,
+	ATTACKING
+};
+
 class Room;
 class Creature : public Entity
 {
@@ -13,7 +23,6 @@ public:
 protected:
 	bool live;
 	int health;
-	int shield;
 	Entity equip;
 
 private:
