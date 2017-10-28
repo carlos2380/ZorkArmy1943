@@ -4,16 +4,13 @@
 
 Player::Player()
 {
+	ttype = PLAYER_TYPE;
 }
 
 
 Player::~Player()
 {
-}
-
-EntityType Player::GetType()
-{
-	return ROOM_TYPE;
+	ttype = PLAYER_TYPE;
 }
 
 Room* Player::GetRoom()

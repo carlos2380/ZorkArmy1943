@@ -19,15 +19,20 @@ public:
 	Entity();
 	Entity(const char* name, const char* description);
 	virtual ~Entity();
-	virtual EntityType GetType();
+	EntityType GetType();
 
+	Entity* GetEntity(const string &name, const EntityType type);
+	string GetName();
+	string GetDescription();
 	//virtual void Update();
+
+	void AddItem(Entity &entity);
+	bool RemoveItem(const string &name);
 
 protected:
 	string name;
 	string description;
-private:
-	enum type;
+	EntityType ttype;
 	list<Entity*> contains;
 };
 

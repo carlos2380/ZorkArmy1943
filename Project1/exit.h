@@ -9,12 +9,16 @@ class Exit : public Entity
 {
 public:
 	Exit();
+	Exit(const char* name, const char* description, Room* destination, const char* condition);
 	~Exit();
-	EntityType GetType();
+
+	Room* GetDestination();
+	string GetCondition();
 private:
-	enum direction;
-	Room* source;
-	Room* destination;
+	//Room* source;
+	Room* destination = nullptr;
+	string condition = "";
+
 };
 
 #endif

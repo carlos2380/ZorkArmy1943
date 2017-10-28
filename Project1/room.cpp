@@ -5,21 +5,18 @@ using namespace std;
 
 Room::Room()
 {
+	ttype = ROOM_TYPE;
 }
 
 Room::Room(const char* name, const char* description) : Entity(name, description)
 {
+	ttype = ROOM_TYPE;
 }
-
 
 Room::~Room()
 {
 }
 
-EntityType Room::GetType()
-{
-	return ROOM_TYPE;
-}
 
 void Room::Look()
 {

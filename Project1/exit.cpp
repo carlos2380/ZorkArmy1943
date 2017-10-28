@@ -1,17 +1,30 @@
 #include "Exit.h"
+#include "Room.h"
+#include <iostream>
 
 
 
 Exit::Exit()
 {
+	ttype = EXIT_TYPE;
 }
 
+Exit::Exit(const char* name, const char* description, Room* destination, const char* condition)
+: Entity(name, description), destination(destination), condition(condition)
+{
+	ttype = EXIT_TYPE;
+}
 
 Exit::~Exit()
 {
 }
 
-EntityType Exit::GetType()
+Room* Exit::GetDestination()
 {
-	return EXIT_TYPE;
+	return destination;
+}
+
+string Exit::GetCondition()
+{
+	return condition;
 }
