@@ -10,6 +10,12 @@ public:
 	Creature();
 	virtual ~Creature();
 
+protected:
+	bool live;
+	int health;
+	int shield;
+	Entity equip;
+
 private:
 	Room* location;
 };

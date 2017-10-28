@@ -17,7 +17,6 @@ World::World()
 	zoneA->AddItem(*exit2);
 	player = new Player();
 	player->SetRoom(*airplane);
-
 }
 
 
