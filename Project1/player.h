@@ -12,6 +12,8 @@ public:
 	Room* GetRoom();
 	void SetRoom(Room &room);
 	void Look();
+	void Move(const string &place);
+
 private:
 	Room* room;
 };

@@ -8,9 +8,11 @@
 
 World::World()
 {
-	Place* tree = new Place("Tree", "Colgando con el paracaidas de un arbol", 0, false);
+	Place* tree = new Place("tree", "There are big parachute colgando de un arbol", "You are enganxado con el paracaidas colgando del arbol ", 0, false);
+	Place* forest = new Place("forest", "Alote forest", "Tou are in the Forest", 0, true);
 	vector<Place*> placesZoneA;
 	placesZoneA.push_back(tree);
+	placesZoneA.push_back(forest);
 	Room* airplane = new Room("Airplain", "you are in one airplane");
 	Room* zoneA = new Room("Zone A", "you are in Zone A", placesZoneA, 0);
 	Exit* exit = new Exit("nord", "Big door", zoneA, "");
@@ -28,7 +30,7 @@ World::~World()
 {
 }
 
-void World::MovePlayer(vector<string>& tokens)
+void World::GoPlayer(vector<string>& tokens)
 {
 	string condition;
 	bool open = true;
@@ -42,9 +44,9 @@ void World::MovePlayer(vector<string>& tokens)
 
 		if(open)
 		{
-			player->GetRoom()->ExitCreature(player->GetName());
+			player->GetRoom()->ExitPlayer(player->GetName());
 			player->SetRoom(*(exit->GetDestination()));
-			exit->GetDestination()->EnterCreature(*player);
+			exit->GetDestination()->EnterPlayer(*player);
 			player->Look();
 		}else
 		{
@@ -60,9 +62,9 @@ void World::ParseCommand(vector<string>& tokens)
 	bool unparseable = false;
 	switch (tokens.size())
 	{
-		case 1: // commands with no arguments ------------------------------
+		case 1: 
 		{
-			if (!tokens[0].compare("look") || !tokens[0].compare("l")) // Why negated¿?
+			if (!tokens[0].compare("look") || !tokens[0].compare("l")) 
 			{
 				player->Look();
 			}
@@ -72,11 +74,15 @@ void World::ParseCommand(vector<string>& tokens)
 			}
 		}
 		break;
-		case 2: // commands with no arguments ------------------------------
+		case 2: 
 		{
-			if (!tokens[0].compare("go")) // Why negated¿?
+			if (!tokens[0].compare("go")) 
 			{
-				MovePlayer(tokens);
+				GoPlayer(tokens);
+			}
+			else if (!tokens[0].compare("walk") || !tokens[0].compare("move") || !tokens[0].compare("run")) 
+			{
+				player->Move(tokens[1]);
 			}
 			else
 			{

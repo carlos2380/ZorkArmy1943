@@ -16,6 +16,9 @@ public:
 	void Look();
 	void EnterCreature(Entity &entity);
 	void ExitCreature(string &name);
+	void EnterPlayer(Entity &entity);
+	void ExitPlayer(string &name);
+	void MovePlayer(const string &place);
 
 private:
 	vector<Place*> places;

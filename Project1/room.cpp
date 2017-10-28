@@ -45,14 +45,14 @@ void Room::Look()
 	{
 		cout << places[i]->GetName() << ", " << places[i]->GetDescription() << endl;
 	}
-	cout << endl << "You are in ";
+
 	if (currentPlayerPlace >= 0)
 	{
-		cout << places[currentPlayerPlace]->GetName() << endl;
+		cout << endl << places[currentPlayerPlace]->GetDesciptionPlayer() << endl;
 	}
 	else
 	{
-		cout << GetName() << endl;
+		cout << endl << "You are in " << GetName() << endl;
 	}
 }
 
@@ -61,8 +61,6 @@ void Room::EnterCreature(Entity &entity)
 	if(firstPlace >= 0)
 	{
 		places[firstPlace]->AddItem(entity);
-		places[firstPlace]->SetVisited(true);
-		currentPlayerPlace = firstPlace;
 	}else
 	{
 		AddItem(entity);
@@ -78,5 +76,48 @@ void Room::ExitCreature(string &name)
 		{
 			deleted = places[i]->RemoveItem(name);
 		}
+	}
+}
+
+void Room::EnterPlayer(Entity& entity)
+{
+	if (firstPlace >= 0)
+	{
+		currentPlayerPlace = firstPlace;
+		places[firstPlace]->SetVisited(true);
+	}
+	else
+	{
+		currentPlayerPlace = -1;
+	}
+	AddItem(entity);
+}
+
+void Room::ExitPlayer(string& name)
+{
+	RemoveItem(name);
+}
+
+void Room::MovePlayer(const string& place)
+{
+	bool found = false;
+	for (int i = 0; (i < places.size()) && (!found); ++i)
+	{
+		if(!places[i]->GetName().compare(place))
+		{
+			if(places[i]->IsAccessible())
+			{
+				currentPlayerPlace = i;
+				cout << places[i]->GetDesciptionPlayer() << endl;
+			}else
+			{
+				cout << "You can't move to " << place << "!" << endl;
+			}
+			found = true;
+		}
+	}
+	if(!found)
+	{
+		cout << "Not exist place called " << place << "!" << endl;
 	}
 }

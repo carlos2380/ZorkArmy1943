@@ -12,7 +12,7 @@ public:
 	World();
 	~World();
 
-	void MovePlayer(vector<string>& tokens);
+	void GoPlayer(vector<string>& tokens);
 	void ParseCommand(vector<string>& tokens);
 private:
 	vector<Entity*> zones;

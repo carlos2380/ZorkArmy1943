@@ -27,3 +27,8 @@ void Player::Look()
 {
 	room->Look();
 }
+
+void Player::Move(const string& place)
+{
+	room->MovePlayer(place);
+}

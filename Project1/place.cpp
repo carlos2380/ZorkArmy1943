@@ -7,8 +7,8 @@ Place::Place()
 	visited = false;
 }
 
-Place::Place(const char* name, const char* description, int visibility, bool accessible) 
-: Entity(name, description), visibility(visibility), accessible(accessible)
+Place::Place(const char* name, const char* description, const char* descriptionPlayer, int visibility, bool accessible)
+: Entity(name, description), descriptionPlayer(descriptionPlayer), visibility(visibility), accessible(accessible)
 {
 	ttype = PLACE_TYPE;
 	visited = false;
@@ -41,5 +41,10 @@ bool Place::IsAccessible()
 void Place::SetAccessible(bool accessible)
 {
 	this->accessible = accessible;
+}
+
+string Place::GetDesciptionPlayer()
+{
+	return descriptionPlayer;
 }
 
