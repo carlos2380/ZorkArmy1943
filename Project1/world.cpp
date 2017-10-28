@@ -3,12 +3,16 @@
 #include "player.h"
 #include <iostream>
 #include "exit.h"
+#include "place.h"
 
 
 World::World()
 {
+	Place* tree = new Place("Tree", "Colgando con el paracaidas de un arbol", 0, false);
+	vector<Place*> placesZoneA;
+	placesZoneA.push_back(tree);
 	Room* airplane = new Room("Airplain", "you are in one airplane");
-	Room* zoneA = new Room("Zone A", "you are in Zone A");
+	Room* zoneA = new Room("Zone A", "you are in Zone A", placesZoneA, 0);
 	Exit* exit = new Exit("nord", "Big door", zoneA, "");
 	Exit* exit2 = new Exit("south", "Big door", airplane, "");
 	zones.push_back(airplane);
@@ -38,9 +42,9 @@ void World::MovePlayer(vector<string>& tokens)
 
 		if(open)
 		{
-			player->GetRoom()->RemoveItem(player->GetName());
+			player->GetRoom()->ExitCreature(player->GetName());
 			player->SetRoom(*(exit->GetDestination()));
-			exit->GetDestination()->AddItem(*player);
+			exit->GetDestination()->EnterCreature(*player);
 			player->Look();
 		}else
 		{

@@ -8,12 +8,13 @@ class Place :
 public:
 	Place();
 	~Place();
-	Place(const char* name, const char* description, int &visibility, bool &accessible);
+	Place(const char* name, const char* description, int visibility, bool accessible);
 
 	bool IsVisited();
-	bool SetVisited(bool visited);
+	void SetVisited(bool visited);
 	int GetVisibility();
-	bool isAccessible();
+	bool IsAccessible();
+	void SetAccessible(bool accessible);
 
 private:
 	bool visited;
