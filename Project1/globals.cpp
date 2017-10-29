@@ -57,3 +57,8 @@ void Tokenize(const string& line, vector<string>& tokens)
 		tokens.push_back(token);
 
 }
+
+int RandomNumber(int max, int min)
+{
+	return rand()%(max-min + 1) + min;
+}

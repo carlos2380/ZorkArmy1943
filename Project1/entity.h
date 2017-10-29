@@ -11,7 +11,9 @@ enum EntityType
 	ROOM_TYPE,
 	EXIT_TYPE,
 	PLAYER_TYPE,
-	PLACE_TYPE
+	PLACE_TYPE,
+	ITEM_TYPE,
+	WEAPOND_TYPE,
 };
 
 class Entity
