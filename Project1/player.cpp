@@ -140,3 +140,28 @@ void Player::Reload()
 		}
 	}
 }
+
+void Player::Drop(const string& name)
+{
+	bool found = false;
+	list<Entity*>::iterator it = contains.begin();
+	for (int i = 0; i < contains.size() && !found; ++i)
+	{
+		if (!(*it)->GetName().compare(name))
+		{
+			if (equip != nullptr) {
+				if (!equip->GetName().compare(name)) Unequip();
+			}
+			room->AddItem(**it);
+			contains.erase(it);
+			found = true;
+			cout << name << " droped!" << endl;
+		}
+		if (i <  contains.size())++it;
+	}
+
+	if(found == false)
+	{
+		cout << "No " << name << " for drop!" << endl;
+	}
+}

@@ -21,6 +21,7 @@ public:
 	void Attack(const string &name);
 	void Stats(const string &name);
 	void Reload();
+	void Drop(const string &name);
 private:
 	Room* room;
 };

@@ -142,6 +142,10 @@ bool World::ParseCommand(vector<string>& tokens)
 			{
 				player->Stats(tokens[1]);
 			}
+			else if (!tokens[0].compare("drop"))
+			{
+				player->Drop(tokens[1]);
+			}
 			else
 			{
 				unparseable = true;
