@@ -22,6 +22,7 @@ public:
 	void Stats(const string &name);
 	void Reload();
 	void Drop(const string &name);
+	bool Rescue(const string &name);
 private:
 	Room* room;
 };

@@ -46,11 +46,12 @@ Room::~Room()
 
 void Room::Look()
 {
-	cout << endl << name << ", " << description << endl;
+	cout << endl << name << ", " << description << endl << endl;
 	
+	if(places.size()>0)cout << "you can walk to the next places" << endl;
 	for (int i = 0; (i < places.size()); ++i)
 	{
-		cout << places[i]->GetName() << ", " << places[i]->GetDescription() << endl;
+		cout << "\t" <<places[i]->GetName() << ", " << places[i]->GetDescription() << endl;
 	}
 
 	cout << endl << "There are: " << endl;
@@ -321,4 +322,49 @@ void Room::EnemiesSeekPlayer()
 	{
 		places[i]->EnemiesSeekPlayer();
 	}
+}
+
+bool Room::Rescue(const string& name)
+{
+	bool enemies = false;
+	bool host = false;
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (((*it)->GetType() == NCP_TYPE) && ((Creature*)(*it))->GetStat() != DEAD) {
+			enemies =  true;
+		}
+	}
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (!(*it)->GetName().compare(name) && ((*it)->GetType() == CREATURE_TYPE) && ((Creature*)(*it))->GetStat() != DEAD) {
+			host = true;
+		}
+	}
+
+	for (int i = 0; (i < places.size()); ++i)
+	{
+		int ret = places[i]->Rescue(name);
+		if(ret == 1)
+		{
+			host = true;
+		}else if(ret == 0)
+		{
+			enemies = true;
+		}
+	}
+	if (host)
+	{
+		if (enemies)
+		{
+			cout << "you cant rescue, enemies alive!" << endl;
+			return true;
+		}
+		return true;
+	}
+	else  {
+		
+		cout << "No host " << name << " found!" << endl;
+		return false;
+	}
+
 }

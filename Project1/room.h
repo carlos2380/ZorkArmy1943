@@ -26,6 +26,7 @@ public:
 	bool EnemyAttacking();
 	void TurnAttackEnemies(Player& player);
 	void EnemiesSeekPlayer();
+	bool Rescue(const string &name);
 private:
 	vector<Place*> places;
 	int firstPlace;

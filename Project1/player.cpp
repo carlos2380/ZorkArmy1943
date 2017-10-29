@@ -165,3 +165,8 @@ void Player::Drop(const string& name)
 		cout << "No " << name << " for drop!" << endl;
 	}
 }
+
+bool Player::Rescue(const string& name)
+{
+	return room->Rescue(name);
+}

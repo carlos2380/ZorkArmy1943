@@ -142,3 +142,22 @@ void Place::EnemiesSeekPlayer()
 	}
 }
 
+int Place::Rescue(const string& name)
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (((*it)->GetType() == NCP_TYPE) && ((Creature*)(*it))->GetStat() != DEAD) {
+			cout << "you cant rescue, enemies alive!" << endl;
+			return 0;
+		}
+	}
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (!(*it)->GetName().compare(name) && ((*it)->GetType() == CREATURE_TYPE) && ((Creature*)(*it))->GetStat() != DEAD) {
+			return 1;
+		}
+	}
+	return -1;
+}
+
+

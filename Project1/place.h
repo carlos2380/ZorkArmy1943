@@ -24,6 +24,7 @@ public:
 	bool EnemyAttacking();
 	void TurnAttackEnemies(Player& player);
 	void EnemiesSeekPlayer();
+	int Rescue(const string& name);
 
 private:
 	bool visited;
