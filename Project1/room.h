@@ -5,6 +5,7 @@
 #include <vector>
 
 class Place;
+class Player;
 class Room : public Entity
 {
 public:
@@ -19,6 +20,7 @@ public:
 	void EnterPlayer(Entity &entity);
 	void ExitPlayer(string &name);
 	void MovePlayer(const string &place);
+	bool TakeToPlayer(const string &name, Player &player);
 
 private:
 	vector<Place*> places;

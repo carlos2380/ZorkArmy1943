@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Room.h"
+#include <iostream>
 
 
 Player::Player()
@@ -36,4 +37,15 @@ void Player::Look()
 void Player::Move(const string& place)
 {
 	room->MovePlayer(place);
+}
+
+void Player::Take(const string& name)
+{
+	if(room->TakeToPlayer(name, *this))
+	{
+		cout << name << " taked!" << endl;
+	}else
+	{
+		cout << "No item called " << name << " for take." << endl;
+	}
 }

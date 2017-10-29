@@ -1,4 +1,5 @@
 #include "place.h"
+#include "player.h"
 #include <iostream>
 
 
@@ -68,4 +69,18 @@ void Place::Look()
 		}
 	}
 }
+
+bool Place::TakeToPlayer(const string& name, Player &player)
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (!(*it)->GetName().compare(name) && ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE)) {
+			player.AddItem(*(*it));
+			contains.remove(*it);
+			return true;
+		}
+	}
+	return false;
+}
+
 

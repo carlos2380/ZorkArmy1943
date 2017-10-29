@@ -102,6 +102,10 @@ void World::ParseCommand(vector<string>& tokens)
 			{
 				player->Move(tokens[1]);
 			}
+			else if (!tokens[0].compare("take"))
+			{
+				player->Take(tokens[1]);
+			}
 			else
 			{
 				unparseable = true;

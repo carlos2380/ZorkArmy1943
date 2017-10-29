@@ -2,6 +2,8 @@
 #define __Place__
 
 #include "entity.h"
+
+class Player;
 class Place :
 	public Entity
 {
@@ -17,6 +19,7 @@ public:
 	void SetAccessible(bool accessible);
 	string GetDesciptionPlayer();
 	void Look();
+	bool TakeToPlayer(const string& name, Player &player);
 
 private:
 	bool visited;

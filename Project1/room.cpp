@@ -1,6 +1,8 @@
 #include "Room.h"
+#include "Player.h"
 #include <iostream>
 #include "place.h"
+#include "Item.h"
 
 using namespace std;
 
@@ -143,3 +145,26 @@ void Room::MovePlayer(const string& place)
 		cout << "Not exist place called " << place << "!" << endl;
 	}
 }
+
+bool Room::TakeToPlayer(const string& name, Player &player)
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (!(*it)->GetName().compare(name) && ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE)) {
+			player.AddItem(*(*it));
+			contains.remove(*it);
+			return true;
+		}
+	}
+	for (int i = 0; (i < places.size()); ++i)
+	{
+		if(places[i]->IsVisited())
+		{
+			if(places[i]->TakeToPlayer(name, player)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
