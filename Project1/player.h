@@ -13,6 +13,7 @@ public:
 	Room* GetRoom();
 	void SetRoom(Room &room);
 	void Look();
+	void Inventary();
 	void Move(const string &place);
 	void Take(const string &name);
 

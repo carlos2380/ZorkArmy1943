@@ -86,6 +86,10 @@ void World::ParseCommand(vector<string>& tokens)
 			{
 				player->Look();
 			}
+			else if(!tokens[0].compare("inventary") || !tokens[0].compare("i"))
+			{
+				player->Inventary();
+			}
 			else
 			{
 				unparseable = true;

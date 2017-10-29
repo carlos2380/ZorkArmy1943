@@ -34,6 +34,16 @@ void Player::Look()
 	room->Look();
 }
 
+void Player::Inventary()
+{
+	cout << endl << "Inventary:" << endl;
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << endl;
+	}
+	cout << endl;
+}
+
 void Player::Move(const string& place)
 {
 	room->MovePlayer(place);
