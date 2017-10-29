@@ -13,7 +13,7 @@ public:
 	~World();
 
 	void GoPlayer(vector<string>& tokens);
-	void ParseCommand(vector<string>& tokens);
+	bool ParseCommand(vector<string>& tokens);
 private:
 	vector<Entity*> zones;
 	Player* player = nullptr;

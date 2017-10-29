@@ -22,6 +22,8 @@ public:
 	bool TakeToPlayer(const string& name, Player &player);
 	bool Stats(const string& name);
 	bool EnemyAttacking();
+	void TurnAttackEnemies(Player& player);
+
 private:
 	bool visited;
 	int visibility;

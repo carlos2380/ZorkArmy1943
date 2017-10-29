@@ -81,7 +81,7 @@ void World::GoPlayer(vector<string>& tokens)
 }
 
 
-void World::ParseCommand(vector<string>& tokens)
+bool World::ParseCommand(vector<string>& tokens)
 {
 	bool unparseable = false;
 	switch (tokens.size())
@@ -151,4 +151,12 @@ void World::ParseCommand(vector<string>& tokens)
 	{
 		cout << "\nSorry, I do not understand your command.\n";
 	}
+	player->GetRoom()->TurnAttackEnemies(*player);
+
+	if(!player->isAlive())
+	{
+		cout << endl << "\t---- GAME OVER ----" << endl;
+		return true;
+	}
+	return false;
 }

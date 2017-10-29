@@ -260,3 +260,26 @@ bool Room::EnemyAttacking()
 	}
 	return false;
 }
+
+void Room::TurnAttackEnemies(Player& player)
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (((*it)->GetType() == NCP_TYPE) && ((Creature*)(*it))->GetStat() == ATTACKING) {
+			if(((Weapond*)((Ncp*)(*it))->GetEquip())->GetAmmo() > 0)
+			{
+				int dammage = ((Ncp*)(*it))->GetDammageAttack();
+				player.Strike(dammage);
+				cout << (*it)->GetName() << " attack you! -" << dammage << " (" << player.GetHealth() << " points of life)" << endl;
+			}else
+			{
+				cout << (*it)->GetName() << "attaking you but no have ammo!" << endl;
+			}
+		}
+	}
+	for (int i = 0; (i < places.size()); ++i)
+	{
+		places[i]->TurnAttackEnemies(player);
+	}
+
+}

@@ -24,6 +24,7 @@ public:
 	bool PlayerAttackTo(const string &name, Player &player);
 	bool Stats(const string &name);
 	bool EnemyAttacking();
+	void TurnAttackEnemies(Player& player);
 private:
 	vector<Place*> places;
 	int firstPlace;

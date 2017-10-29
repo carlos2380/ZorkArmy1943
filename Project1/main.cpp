@@ -34,12 +34,12 @@ int main() {
 		{
 			isEndLine = false;
 			Tokenize(intputLine, tokens);
-			word.ParseCommand(tokens);
+			if(word.ParseCommand(tokens)) state = MAIN_EXIT;
 			tokens.clear();
 			intputLine = "";
 			cout << "> ";
 		}
 	}
-
+	system("PAUSE");
 	return 0;
 }
