@@ -6,6 +6,7 @@
 #include "creature.h"
 #include "Ncp.h"
 #include "weapond.h"
+#include "globals.h"
 
 using namespace std;
 
@@ -179,9 +180,17 @@ bool Room::PlayerAttackTo(const string& name, Player& player)
 		if (enemy->isAlive())
 		{
 			int dammage = player.GetDammageAttack();
-			enemy->Strike(dammage);
-			cout << enemy->GetName() << " Striked! -" << dammage << " (" << enemy->GetHealth() << " points of life)" << endl;
-			return true;
+			if(dammage > 0)
+			{
+				enemy->Strike(dammage);
+				cout << enemy->GetName() << " Striked! -" << dammage << " (" << enemy->GetHealth() << " points of life)" << endl;
+				return true;
+			}
+			else
+			{
+				enemy->Strike(dammage);
+				cout << "You atack to " << enemy->GetName() << " but failed!" << endl;
+			}
 		}
 		else
 		{
@@ -270,7 +279,8 @@ void Room::TurnAttackEnemies(Player& player)
 			{
 				int dammage = ((Ncp*)(*it))->GetDammageAttack();
 				player.Strike(dammage);
-				cout << (*it)->GetName() << " attack you! -" << dammage << " (" << player.GetHealth() << " points of life)" << endl;
+				if(dammage > 0) cout << (*it)->GetName() << " attack you! -" << dammage << " (" << player.GetHealth() << " points of life)" << endl;
+				else cout << (*it)->GetName() << " attack you but failed!" << endl;
 			}else
 			{
 				cout << (*it)->GetName() << "attaking you but no have ammo!" << endl;
@@ -282,4 +292,23 @@ void Room::TurnAttackEnemies(Player& player)
 		places[i]->TurnAttackEnemies(player);
 	}
 
+}
+
+void Room::EnemiesSeekPlayer()
+{
+
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (((*it)->GetType() == NCP_TYPE) && ((Creature*)(*it))->GetStat() != DEAD) {
+			if(RandomNumber(0,100) < 20)
+			{
+				((Ncp*)(*it))->SetStat(ATTACKING);
+				cout << "Enemy " << (*it)->GetName() << " see you!" << endl;
+			}
+		}
+	}
+	for (int i = 0; (i < places.size()); ++i)
+	{
+		places[i]->EnemiesSeekPlayer();
+	}
 }

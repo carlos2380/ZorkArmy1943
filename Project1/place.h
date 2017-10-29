@@ -23,6 +23,7 @@ public:
 	bool Stats(const string& name);
 	bool EnemyAttacking();
 	void TurnAttackEnemies(Player& player);
+	void EnemiesSeekPlayer();
 
 private:
 	bool visited;

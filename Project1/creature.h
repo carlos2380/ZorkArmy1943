@@ -25,6 +25,7 @@ public:
 	bool isAlive();
 	int GetHealth();
 	CretureStat GetStat();
+	void SetStat(CretureStat cretureStat);
 	void Strike(int damage);
 	bool SetEquip(Entity &entity);
 	Entity* GetEquip();

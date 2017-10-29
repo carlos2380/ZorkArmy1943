@@ -115,10 +115,12 @@ bool World::ParseCommand(vector<string>& tokens)
 			if (!tokens[0].compare("go")) 
 			{
 				GoPlayer(tokens);
+				player->GetRoom()->EnemiesSeekPlayer();
 			}
 			else if (!tokens[0].compare("walk") || !tokens[0].compare("move") || !tokens[0].compare("run")) 
 			{
 				player->Move(tokens[1]);
+				player->GetRoom()->EnemiesSeekPlayer();
 			}
 			else if (!tokens[0].compare("take"))
 			{

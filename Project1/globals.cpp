@@ -58,7 +58,10 @@ void Tokenize(const string& line, vector<string>& tokens)
 
 }
 
-int RandomNumber(int max, int min)
+int RandomNumber(int min, int max)
 {
-	return rand()%(max-min + 1) + min;
+	int num = rand() % (max - min);
+	num += min;
+	//cout << endl << "\t\t" << num << endl;
+	return num;
 }

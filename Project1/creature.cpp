@@ -38,6 +38,11 @@ CretureStat Creature::GetStat()
 	return stat;
 }
 
+void Creature::SetStat(CretureStat cretureStat)
+{
+	stat = cretureStat;
+}
+
 void Creature::Strike(int damage)
 {
 	health -= damage;

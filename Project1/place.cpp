@@ -3,6 +3,7 @@
 #include <iostream>
 #include "weapond.h"
 #include "ncp.h"
+#include "globals.h"
 
 
 Place::Place()
@@ -127,4 +128,17 @@ void Place::TurnAttackEnemies(Player& player)
 	}
 }
 
+void Place::EnemiesSeekPlayer()
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (((*it)->GetType() == NCP_TYPE) && ((Creature*)(*it))->GetStat() != DEAD) {
+			if (RandomNumber(0, 100) < 20)
+			{
+				((Ncp*)(*it))->SetStat(ATTACKING);
+				cout << "Enemy " << (*it)->GetName() << " see you!" << endl;
+			}
+		}
+	}
+}
 

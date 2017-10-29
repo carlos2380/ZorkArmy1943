@@ -79,7 +79,7 @@ int Weapond::Atack()
 			return -1;
 		}
 	}
-	int damage =  RandomNumber(maxDamage, minDamage);
+	int damage =  RandomNumber(minDamage, maxDamage);
 
 	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
 	{
