@@ -63,10 +63,15 @@ void World::GoPlayer(vector<string>& tokens)
 
 		if(open)
 		{
-			player->GetRoom()->ExitPlayer(player->GetName());
-			player->SetRoom(*(exit->GetDestination()));
-			exit->GetDestination()->EnterPlayer(*player);
-			player->Look();
+			if (!player->GetRoom()->EnemyAttacking()) {
+				player->GetRoom()->ExitPlayer(player->GetName());
+				player->SetRoom(*(exit->GetDestination()));
+				exit->GetDestination()->EnterPlayer(*player);
+				player->Look();
+			}else
+			{
+				cout << "Enemies attacking you!" << endl;
+			}
 		}else
 		{
 			cout << "You can't GO! The " << exit->GetDescription() << " is blocked!" << endl;

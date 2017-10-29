@@ -20,6 +20,6 @@ Ncp::~Ncp()
 void Ncp::Strike(int damage)
 {
 	Creature::Strike(damage);
-	stat = ATTACKING;
+	if(isAlive()) stat = ATTACKING;
 }
 

@@ -10,7 +10,8 @@ enum CretureStat
 	SITTING,
 	SMOKING,
 	STANDING,
-	ATTACKING
+	ATTACKING,
+	DEAD
 };
 
 class Room;
@@ -23,6 +24,7 @@ public:
 
 	bool isAlive();
 	int GetHealth();
+	CretureStat GetStat();
 	void Strike(int damage);
 	bool SetEquip(Entity &entity);
 	Entity* GetEquip();

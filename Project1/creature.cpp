@@ -33,12 +33,18 @@ int Creature::GetHealth()
 	return health;
 }
 
+CretureStat Creature::GetStat()
+{
+	return stat;
+}
+
 void Creature::Strike(int damage)
 {
 	health -= damage;
 	if(health <= 0)
 	{
 		alive = false;
+		stat = DEAD;
 	}
 }
 

@@ -23,7 +23,7 @@ public:
 	bool TakeToPlayer(const string &name, Player &player);
 	bool PlayerAttackTo(const string &name, Player &player);
 	bool Stats(const string &name);
-
+	bool EnemyAttacking();
 private:
 	vector<Place*> places;
 	int firstPlace;

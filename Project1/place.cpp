@@ -95,4 +95,15 @@ bool Place::Stats(const string& name)
 	return false;
 }
 
+bool Place::EnemyAttacking()
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (((*it)->GetType() == NCP_TYPE) && ((Creature*)(*it))->GetStat() == ATTACKING) {
+			return true;
+		}
+	}
+	return false;
+}
+
 

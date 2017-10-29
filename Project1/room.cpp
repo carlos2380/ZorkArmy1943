@@ -224,7 +224,7 @@ bool Room::PlayerAttackTo(const string& name, Player& player)
 			}
 		}
 	}
-	cout << "Not " << name << "for attack!" << endl;
+	cout << "Not " << name << " for attack!" << endl;
 	return false;
 }
 
@@ -243,5 +243,20 @@ bool Room::Stats(const string& name)
 	}
 	
 	cout << "No " << name << " with states!" << endl;
+	return false;
+}
+
+bool Room::EnemyAttacking()
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (((*it)->GetType() == NCP_TYPE) && ((Creature*)(*it))->GetStat() == ATTACKING) {
+			return true;
+		}
+	}
+	for (int i = 0; (i < places.size()); ++i)
+	{
+		if (places[i]->EnemyAttacking()) return true;
+	}
 	return false;
 }

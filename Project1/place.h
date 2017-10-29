@@ -21,6 +21,7 @@ public:
 	void Look();
 	bool TakeToPlayer(const string& name, Player &player);
 	bool Stats(const string& name);
+	bool EnemyAttacking();
 private:
 	bool visited;
 	int visibility;
