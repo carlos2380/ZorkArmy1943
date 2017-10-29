@@ -16,6 +16,8 @@ public:
 	void Inventary();
 	void Move(const string &place);
 	void Take(const string &name);
+	void Unequip();
+	void Equip(const string &name);
 
 private:
 	Room* room;

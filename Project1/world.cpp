@@ -1,13 +1,13 @@
 #include "World.h"
 #include "room.h"
 #include "player.h"
-#include <iostream>
 #include "exit.h"
 #include "place.h"
 #include "globals.h"
 #include "weapond.h"
 #include "Item.h"
 #include "Ncp.h"
+#include <iostream>
 
 
 World::World()
@@ -30,10 +30,10 @@ World::World()
 	zoneA->AddItem(*exit2);
 	player = new Player("Bishop", "Coronel of SAS", 100, STANDING);
 	player->SetRoom(*airplane);
-	Weapond* pistol = new Weapond("Pistol", "M1911 made by Colt, USA", true, 30, 50, 60, "9mm");
+	Weapond* pistol = new Weapond("pistol", "M1911 made by Colt, USA", true, 30, 50, 60, "9mm");
 	Item* butllet = new Item("9mm", "Type of ammo", NORMAL);
 	Item* butllet2 = new Item(*butllet);
-	Ncp* enemy = new Ncp("Enemy1", "Enemy!", 80, WALKING);
+	Ncp* enemy = new Ncp("enemy1", "Enemy!", 80, WALKING);
 	airplane->EnterPlayer(*player);
 	airplane->AddItem(*pistol);
 	airplane->AddItem(*butllet);
@@ -90,6 +90,10 @@ void World::ParseCommand(vector<string>& tokens)
 			{
 				player->Inventary();
 			}
+			else if (!tokens[0].compare("unequip"))
+			{
+				player->Unequip();
+			}
 			else
 			{
 				unparseable = true;
@@ -110,6 +114,10 @@ void World::ParseCommand(vector<string>& tokens)
 			{
 				player->Take(tokens[1]);
 			}
+			else if (!tokens[0].compare("equip"))
+			{
+				player->Equip(tokens[1]);
+			}
 			else
 			{
 				unparseable = true;
@@ -124,6 +132,5 @@ void World::ParseCommand(vector<string>& tokens)
 	if(unparseable)
 	{
 		cout << "\nSorry, I do not understand your command.\n";
-		unparseable = false;
 	}
 }

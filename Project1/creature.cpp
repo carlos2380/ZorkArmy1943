@@ -44,7 +44,7 @@ bool Creature::SetEquip(Entity& entity)
 {
 	if(entity.GetType() == WEAPOND_TYPE)
 	{
-		equip = entity;
+		equip = &entity;
 		return true;
 	}
 	return false;
@@ -52,7 +52,7 @@ bool Creature::SetEquip(Entity& entity)
 
 Entity Creature::GetEquip()
 {
-	return  equip;
+	return  *equip;
 }
 
 

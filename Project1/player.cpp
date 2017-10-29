@@ -59,3 +59,32 @@ void Player::Take(const string& name)
 		cout << "No item called " << name << " for take." << endl;
 	}
 }
+
+void Player::Unequip()
+{
+	if(equip != nullptr)
+	{
+		cout << equip->GetName() << " unequiped!" << endl;
+	}
+	else cout << "unequiped!" << endl;
+	equip = nullptr;
+}
+
+void Player::Equip(const string& name)
+{
+	bool found = false;
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end() && !found; ++it)
+	{
+		if(!(*it)->GetName().compare(name) && (*it)->GetType() == WEAPOND_TYPE)
+		{
+			equip = *it;
+			cout << name << " equiped!" << endl;
+			found = true;
+		}
+	}
+	if(!found)
+	{
+		cout << "No item called " << name << " can equip!" << endl;
+	}
+}
+

@@ -30,7 +30,7 @@ public:
 protected:
 	bool alive;
 	int health;
-	Entity equip;
+	Entity* equip;
 	CretureStat stat;
 
 private:
