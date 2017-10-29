@@ -136,6 +136,7 @@ void Room::MovePlayer(const string& place)
 		{
 			if(places[i]->IsAccessible())
 			{
+				places[i]->SetVisited(true);
 				currentPlayerPlace = i;
 				cout << places[i]->GetDesciptionPlayer() << endl;
 			}else
