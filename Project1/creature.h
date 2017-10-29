@@ -18,12 +18,20 @@ class Creature : public Entity
 {
 public:
 	Creature();
+	Creature(const char* name, const char* description, int health, CretureStat stat);
 	virtual ~Creature();
 
+	bool isAlive();
+	int GetHealth();
+	void Strike(int damage);
+	bool SetEquip(Entity &entity);
+	Entity GetEquip();
+
 protected:
-	bool live;
+	bool alive;
 	int health;
 	Entity equip;
+	CretureStat stat;
 
 private:
 	Room* location;

@@ -7,6 +7,11 @@ Player::Player()
 	ttype = PLAYER_TYPE;
 }
 
+Player::Player(const char* name, const char* description, int health, CretureStat stat)
+: Creature(name, description,health,stat)
+{
+	ttype = PLAYER_TYPE;
+}
 
 Player::~Player()
 {

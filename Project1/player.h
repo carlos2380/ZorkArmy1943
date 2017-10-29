@@ -7,6 +7,7 @@ class Player : public Creature
 {
 public:
 	Player();
+	Player(const char* name, const char* description, int health, CretureStat stat);
 	~Player();
 
 	Room* GetRoom();

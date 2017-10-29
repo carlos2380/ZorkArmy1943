@@ -14,6 +14,8 @@ enum EntityType
 	PLACE_TYPE,
 	ITEM_TYPE,
 	WEAPOND_TYPE,
+	CREATURE_TYPE,
+	NCP_TYPE
 };
 
 class Entity
