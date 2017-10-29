@@ -26,7 +26,7 @@ int main() {
 	string intputLine;
 	vector<string> tokens;
 	bool isEndLine = false;
-
+	cout << "> ";
 	while (state != MAIN_EXIT)
 	{
 		UpdateInput(intputLine, isEndLine);

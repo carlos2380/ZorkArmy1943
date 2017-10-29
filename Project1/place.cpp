@@ -1,5 +1,5 @@
 #include "place.h"
-
+#include <iostream>
 
 
 Place::Place()
@@ -46,5 +46,26 @@ void Place::SetAccessible(bool accessible)
 string Place::GetDesciptionPlayer()
 {
 	return descriptionPlayer;
+}
+
+void Place::Look()
+{
+	if(visited)
+	{
+		for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+		{
+			if ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE || (*it)->GetType() == NCP_TYPE) {
+				cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << endl;
+			}
+		}
+	}else
+	{
+		for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+		{
+			if ((*it)->GetType() == NCP_TYPE) {
+				cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << endl;
+			}
+		}
+	}
 }
 

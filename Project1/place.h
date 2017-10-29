@@ -16,6 +16,8 @@ public:
 	bool IsAccessible();
 	void SetAccessible(bool accessible);
 	string GetDesciptionPlayer();
+	void Look();
+
 private:
 	bool visited;
 	int visibility;

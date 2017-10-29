@@ -40,10 +40,31 @@ Room::~Room()
 
 void Room::Look()
 {
-	cout << name << ", " << description << endl;
+	cout << endl << name << ", " << description << endl;
+	
 	for (int i = 0; (i < places.size()); ++i)
 	{
 		cout << places[i]->GetName() << ", " << places[i]->GetDescription() << endl;
+	}
+
+	cout << endl << "There are: " << endl;
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE || (*it)->GetType() == NCP_TYPE) {
+			cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << endl;
+		}
+	}
+	for (int i = 0; (i < places.size()); ++i)
+	{
+		places[i]->Look();
+	}
+
+	cout << endl << "You can go to: " << endl;
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if ((*it)->GetType() == EXIT_TYPE) {
+			cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << endl;
+		}
 	}
 
 	if (currentPlayerPlace >= 0)
@@ -54,6 +75,7 @@ void Room::Look()
 	{
 		cout << endl << "You are in " << GetName() << endl;
 	}
+	cout << endl;
 }
 
 void Room::EnterCreature(Entity &entity)

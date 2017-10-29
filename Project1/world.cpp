@@ -5,6 +5,9 @@
 #include "exit.h"
 #include "place.h"
 #include "globals.h"
+#include "weapond.h"
+#include "Item.h"
+#include "Ncp.h"
 
 
 World::World()
@@ -14,6 +17,9 @@ World::World()
 	vector<Place*> placesZoneA;
 	placesZoneA.push_back(tree);
 	placesZoneA.push_back(forest);
+
+	
+
 	Room* airplane = new Room("Airplain", "you are in one airplane");
 	Room* zoneA = new Room("Zone A", "you are in Zone A", placesZoneA, 0);
 	Exit* exit = new Exit("nord", "Big door", zoneA, "");
@@ -22,8 +28,19 @@ World::World()
 	zones.push_back(zoneA);
 	airplane->AddItem(*exit);
 	zoneA->AddItem(*exit2);
-	player = new Player();
+	player = new Player("Bishop", "Coronel of SAS", 100, STANDING);
 	player->SetRoom(*airplane);
+	Weapond* pistol = new Weapond("Pistol", "M1911 made by Colt, USA", true, 30, 50, 60, "9mm");
+	Item* butllet = new Item("9mm", "Type of ammo", NORMAL);
+	Item* butllet2 = new Item(*butllet);
+	Ncp* enemy = new Ncp("Enemy1", "Enemy!", 80, WALKING);
+	airplane->EnterPlayer(*player);
+	airplane->AddItem(*pistol);
+	airplane->AddItem(*butllet);
+	airplane->AddItem(*butllet2);
+	airplane->AddItem(*enemy);
+
+	electritityActived = true;
 }
 
 

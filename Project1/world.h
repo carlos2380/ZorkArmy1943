@@ -17,6 +17,7 @@ public:
 private:
 	vector<Entity*> zones;
 	Player* player = nullptr;
+	bool electritityActived;
 };
 
 #endif
