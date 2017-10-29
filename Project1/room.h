@@ -21,6 +21,8 @@ public:
 	void ExitPlayer(string &name);
 	void MovePlayer(const string &place);
 	bool TakeToPlayer(const string &name, Player &player);
+	bool PlayerAttackTo(const string &name, Player &player);
+	bool Stats(const string &name);
 
 private:
 	vector<Place*> places;

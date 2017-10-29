@@ -18,7 +18,8 @@ public:
 	void Take(const string &name);
 	void Unequip();
 	void Equip(const string &name);
-
+	void Attack(const string &name);
+	void Stats(const string &name);
 private:
 	Room* room;
 };

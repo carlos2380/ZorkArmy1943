@@ -9,7 +9,7 @@ public:
 	Ncp();
 	Ncp(const char* name, const char* description, int health, CretureStat stat);
 	~Ncp();
-
+	void Strike(int damage);
 private:
 	enum st_step;
 };

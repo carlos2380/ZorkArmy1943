@@ -20,7 +20,7 @@ public:
 	string GetDesciptionPlayer();
 	void Look();
 	bool TakeToPlayer(const string& name, Player &player);
-
+	bool Stats(const string& name);
 private:
 	bool visited;
 	int visibility;

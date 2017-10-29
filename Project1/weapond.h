@@ -25,7 +25,6 @@ private:
 	bool remote;
 	int minDamage;
 	int maxDamage;
-	//-1 Radial like granade
 	int accuracy;
 	string typeAmmo;
 };

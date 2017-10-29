@@ -83,4 +83,16 @@ bool Place::TakeToPlayer(const string& name, Player &player)
 	return false;
 }
 
+bool Place::Stats(const string& name)
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (!(*it)->GetName().compare(name) && ((*it)->GetType() == CREATURE_TYPE || (*it)->GetType() == NCP_TYPE || (*it)->GetType() == PLAYER_TYPE)) {
+			((Creature*)(*it))->Stats();
+			return true;
+		}
+	}
+	return false;
+}
+
 

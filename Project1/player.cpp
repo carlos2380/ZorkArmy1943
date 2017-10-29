@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Room.h"
 #include <iostream>
+#include "weapond.h"
 
 
 Player::Player()
@@ -86,5 +87,27 @@ void Player::Equip(const string& name)
 	{
 		cout << "No item called " << name << " can equip!" << endl;
 	}
+}
+
+void Player::Attack(const string& name)
+{
+	bool nextStep = true;
+	if(equip)
+	{
+		if(((Weapond*) equip)->GetAmmo() <= 0)
+		{
+			cout << "You don't have ammo for shoot with " << equip->GetName() << "!" << endl;
+			nextStep = false;
+		}
+	}
+	if(nextStep)
+	{
+		room->PlayerAttackTo(name, *this);
+	}
+}
+
+void Player::Stats(const string& name)
+{
+	room->Stats(name);
 }
 

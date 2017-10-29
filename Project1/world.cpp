@@ -5,8 +5,9 @@
 #include "place.h"
 #include "globals.h"
 #include "weapond.h"
-#include "Item.h"
-#include "Ncp.h"
+#include "item.h"
+#include "ncp.h"
+#include "creature.h"
 #include <iostream>
 
 
@@ -38,7 +39,7 @@ World::World()
 	airplane->AddItem(*pistol);
 	airplane->AddItem(*butllet);
 	airplane->AddItem(*butllet2);
-	airplane->AddItem(*enemy);
+	forest->AddItem(*enemy);
 
 	electritityActived = true;
 }
@@ -94,6 +95,10 @@ void World::ParseCommand(vector<string>& tokens)
 			{
 				player->Unequip();
 			}
+			else if (!tokens[0].compare("stats"))
+			{
+				player->Creature::Stats();
+			}
 			else
 			{
 				unparseable = true;
@@ -117,6 +122,14 @@ void World::ParseCommand(vector<string>& tokens)
 			else if (!tokens[0].compare("equip"))
 			{
 				player->Equip(tokens[1]);
+			}
+			else if (!tokens[0].compare("attack"))
+			{
+				player->Attack(tokens[1]);
+			}
+			else if (!tokens[0].compare("stats"))
+			{
+				player->Stats(tokens[1]);
 			}
 			else
 			{

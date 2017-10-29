@@ -13,7 +13,13 @@ Ncp::Ncp(const char* name, const char* description, int health, CretureStat stat
 	ttype = NCP_TYPE;
 }
 
-
 Ncp::~Ncp()
 {
 }
+
+void Ncp::Strike(int damage)
+{
+	Creature::Strike(damage);
+	stat = ATTACKING;
+}
+

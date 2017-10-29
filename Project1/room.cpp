@@ -3,6 +3,9 @@
 #include <iostream>
 #include "place.h"
 #include "Item.h"
+#include "creature.h"
+#include "Ncp.h"
+#include "weapond.h"
 
 using namespace std;
 
@@ -168,3 +171,77 @@ bool Room::TakeToPlayer(const string& name, Player &player)
 	return false;
 }
 
+bool Room::PlayerAttackTo(const string& name, Player& player)
+{
+	Ncp* enemy = (Ncp*)GetEntity(name, NCP_TYPE);
+	if(enemy != nullptr)
+	{
+		if (enemy->isAlive())
+		{
+			int dammage = player.GetDammageAttack();
+			enemy->Strike(dammage);
+			cout << enemy->GetName() << " Striked! -" << dammage << " (" << enemy->GetHealth() << " points of life)" << endl;
+			return true;
+		}
+		else
+		{
+			cout << name << " is dead!" << endl;
+			return false;
+		}
+	}
+	for(int i = 0; i < places.size(); ++i)
+	{
+		Ncp* enemy = (Ncp*)places[i]->GetEntity(name, NCP_TYPE);
+		if (enemy != nullptr)
+		{
+			if (enemy->isAlive())
+			{
+				if((Weapond*) player.GetEquip() == nullptr)
+				{
+					if (currentPlayerPlace != i)
+					{
+						cout << name << " is to far to attack unequiped!" << endl;
+						return false;
+					}
+				}
+				else if(((Weapond*) player.GetEquip())->IsRemote() == false)
+				{
+					if(currentPlayerPlace != i)
+					{
+						cout << name << " is to far to atack with " << player.GetEquip()->GetName() << "!" << endl;
+						return false;
+					}
+				}
+				int dammage = player.GetDammageAttack();
+				enemy->Strike(dammage);
+				cout << enemy->GetName() << " Striked! -" << dammage << " (" << enemy->GetHealth() << " points of life)" << endl;
+				return true;
+			}
+			else
+			{
+				cout << name << " is dead!" << endl;
+				return false;
+			}
+		}
+	}
+	cout << "Not " << name << "for attack!" << endl;
+	return false;
+}
+
+bool Room::Stats(const string& name)
+{
+	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
+	{
+		if (!(*it)->GetName().compare(name) && ((*it)->GetType() == CREATURE_TYPE || (*it)->GetType() == NCP_TYPE || (*it)->GetType() == PLAYER_TYPE)) {
+			((Creature*)(*it))->Stats();
+			return true;
+		}
+	}
+	for (int i = 0; (i < places.size()); ++i)
+	{
+		if(places[i]->Stats(name)) return true;
+	}
+	
+	cout << "No " << name << " with states!" << endl;
+	return false;
+}

@@ -1,5 +1,7 @@
 #include "Creature.h"
-
+#include "weapond.h"
+#include <iostream>
+#include "globals.h"
 
 
 Creature::Creature()
@@ -50,9 +52,53 @@ bool Creature::SetEquip(Entity& entity)
 	return false;
 }
 
-Entity Creature::GetEquip()
+Entity* Creature::GetEquip()
 {
-	return  *equip;
+	if(equip == nullptr) return nullptr;
+	else return equip;
 }
 
+void Creature::Stats()
+{
+	if(isAlive())
+	{
+		cout << "Stats of " << GetName() <<":" << endl;
+		cout << "\tHealth: " << health << " points." << endl;
+		if (equip == nullptr)
+		{
+			cout << "\tEquip: No equip." << endl;
+			cout << "\tAccuracy: " << 80 << "%" << endl;
+			cout << "\tDamage: " << "20 - 30 points" << endl;
+		}
+		else
+		{
+			cout << "\tEquip: " << equip->GetName() << "." << endl;
+			cout << "\tAccuracy: " << ((Weapond*)equip)->GetAccuracy() << "%" << endl;
+			cout << "\tDamage: " << ((Weapond*)equip)->GetMinDamage() << " - " << ((Weapond*)equip)->GetMaxDamage() << " points" << endl;
+		}
+	}else
+	{
+		cout << GetName() << " is dead!" << endl;
+	}
+}
 
+int Creature::GetDammageAttack()
+{
+	if (equip == nullptr)
+	{
+		if (RandomNumber(1, 100) <= 20) return 0;
+		else
+		{
+			return RandomNumber(20, 30);
+		}
+	}
+	else
+	{
+	
+		if (RandomNumber(1, 100) <= ((Weapond*)equip)->GetAccuracy()) return 0;
+		else
+		{
+			RandomNumber(((Weapond*)equip)->GetMinDamage(), ((Weapond*)equip)->GetMaxDamage());
+		}
+	}
+}

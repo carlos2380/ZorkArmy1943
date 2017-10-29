@@ -25,12 +25,14 @@ public:
 	int GetHealth();
 	void Strike(int damage);
 	bool SetEquip(Entity &entity);
-	Entity GetEquip();
+	Entity* GetEquip();
+	void Stats();
+	int GetDammageAttack();
 
 protected:
 	bool alive;
 	int health;
-	Entity* equip;
+	Entity* equip = nullptr;
 	CretureStat stat;
 
 private:
