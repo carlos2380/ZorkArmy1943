@@ -29,6 +29,8 @@ rescue + any| rescatar a un rehén.
 - En el lago hay un tomahawk.
 - En la zona C no hay enemigos.
 
+### Link
+https://github.com/carlos2380/ZorkArmy1943
 
 ### Licence
 Juego creado por Carlos Francisco Alamo Garcia. Todos los derechos reservados.
