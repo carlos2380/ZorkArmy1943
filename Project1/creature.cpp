@@ -86,6 +86,10 @@ void Creature::Stats()
 			cout << "\tEquip: " << equip->GetName() << "." << endl;
 			cout << "\tAccuracy: " << ((Weapond*)equip)->GetAccuracy() << "%" << endl;
 			cout << "\tDamage: " << ((Weapond*)equip)->GetMinDamage() << " - " << ((Weapond*)equip)->GetMaxDamage() << " points" << endl;
+			if(((Weapond*)(equip))->IsRemote())
+			{
+				cout << "\tAmmo: " << ((Weapond*)equip)->GetAmmo() << endl;
+			}
 		}
 	}else
 	{
@@ -113,3 +117,4 @@ int Creature::GetDammageAttack()
 		}
 	}
 }
+

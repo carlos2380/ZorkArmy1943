@@ -20,6 +20,7 @@ public:
 	void Equip(const string &name);
 	void Attack(const string &name);
 	void Stats(const string &name);
+	void Reload();
 private:
 	Room* room;
 };

@@ -190,6 +190,7 @@ bool Room::PlayerAttackTo(const string& name, Player& player)
 			{
 				enemy->Strike(dammage);
 				cout << "You atack to " << enemy->GetName() << " but failed!" << endl;
+				return true;
 			}
 		}
 		else
@@ -222,9 +223,18 @@ bool Room::PlayerAttackTo(const string& name, Player& player)
 					}
 				}
 				int dammage = player.GetDammageAttack();
-				enemy->Strike(dammage);
-				cout << enemy->GetName() << " Striked! -" << dammage << " (" << enemy->GetHealth() << " points of life)" << endl;
-				return true;
+				if (dammage > 0)
+				{
+					enemy->Strike(dammage);
+					cout << enemy->GetName() << " Striked! -" << dammage << " (" << enemy->GetHealth() << " points of life)" << endl;
+					return true;
+				}
+				else
+				{
+					enemy->Strike(dammage);
+					cout << "You atack to " << enemy->GetName() << " but failed!" << endl;
+					return true;
+				}
 			}
 			else
 			{

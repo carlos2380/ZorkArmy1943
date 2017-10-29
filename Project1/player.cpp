@@ -2,6 +2,7 @@
 #include "Room.h"
 #include <iostream>
 #include "weapond.h"
+#include "Item.h"
 
 
 Player::Player()
@@ -102,7 +103,14 @@ void Player::Attack(const string& name)
 	}
 	if(nextStep)
 	{
-		room->PlayerAttackTo(name, *this);
+		bool shoot = room->PlayerAttackTo(name, *this);
+		if(shoot && equip != nullptr)
+		{
+			if(((Weapond*)equip)->IsRemote())
+			{
+				equip->RemoveItem(((Weapond*)equip)->GetTypeAmmo());
+			}
+		}
 	}
 }
 
@@ -111,3 +119,24 @@ void Player::Stats(const string& name)
 	room->Stats(name);
 }
 
+void Player::Reload()
+{
+	if (equip != nullptr)
+	{
+		if (((Weapond*)equip)->IsRemote())
+		{
+			list<Entity*>::iterator it = contains.begin();
+			for (int i = 0; i < contains.size(); ++i)
+			{
+				if(!(*it)->GetName().compare(((Weapond*)equip)->GetTypeAmmo()))
+				{
+					Item* item = (Item*) GetEntity((*it)->GetName(), ITEM_TYPE);
+					equip->AddItem(*item);
+					RemoveItem((*it)->GetName());
+					++i;
+				}
+				if(i <  contains.size())++it;
+			}
+		}
+	}
+}

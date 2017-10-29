@@ -32,6 +32,7 @@ public:
 	void Stats();
 	int GetDammageAttack();
 
+
 protected:
 	bool alive;
 	int health;

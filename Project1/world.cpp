@@ -104,6 +104,10 @@ bool World::ParseCommand(vector<string>& tokens)
 			{
 				player->Creature::Stats();
 			}
+			else if (!tokens[0].compare("reload"))
+			{
+				player->Reload();
+			}
 			else
 			{
 				unparseable = true;
