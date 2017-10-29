@@ -59,7 +59,7 @@ void Place::Look()
 		for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
 		{
 			if ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE || (*it)->GetType() == NCP_TYPE) {
-				cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << endl;
+				cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << " in " << GetName() << endl;
 			}
 		}
 	}else
@@ -67,7 +67,7 @@ void Place::Look()
 		for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
 		{
 			if ((*it)->GetType() == NCP_TYPE) {
-				cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << endl;
+				cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << " in " << GetName() << endl;
 			}
 		}
 	}
