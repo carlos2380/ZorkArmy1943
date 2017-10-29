@@ -115,7 +115,7 @@ World::World()
 
 	Exit* exitAToB = new Exit("east", "back to the forest you can see more", zoneB, "");
 	Exit* exitAToD = new Exit("nord", "in front you see the entrance", zoneC, "");
-	Exit* exitAToC = new Exit("nord", "behin the lake same calm", zoneD, "");
+	Exit* exitAToC = new Exit("west", "behin the lake same calm", zoneD, "");
 	zoneA->AddItem(*exitAToB);
 	zoneA->AddItem(*exitAToD);
 	zoneA->AddItem(*exitAToC);
