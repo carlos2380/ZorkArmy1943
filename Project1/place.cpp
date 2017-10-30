@@ -24,7 +24,7 @@ Place::~Place()
 
 bool Place::IsVisited()
 {
-	return visibility;
+	return visited;
 }
 
 void Place::SetVisited(bool visited)

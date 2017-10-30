@@ -110,7 +110,7 @@ int Creature::GetDammageAttack()
 	else
 	{
 	
-		if (RandomNumber(1, 100) <= ((Weapond*)equip)->GetAccuracy()) return 0;
+		if (RandomNumber(1, 100) > ((Weapond*)equip)->GetAccuracy()) return 0;
 		else
 		{
 			RandomNumber(((Weapond*)equip)->GetMinDamage(), ((Weapond*)equip)->GetMaxDamage());

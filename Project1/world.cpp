@@ -50,10 +50,10 @@ World::World()
 	Place* mountain = new Place("mountain", "you see a snowed mountain at the bottom", "you are at the top of mountain, beutifull see!", 0, true);
 	Ncp* enemy2 = new Ncp("alder", "Crnel enemy", 65, WALKING);
 	Ncp* enemy3 = new Ncp("cort", "CGF enemy", 65, WALKING);
-	Weapond* snipper = new Weapond("snipper", "Knive like a axe", true, 80, 120, 80, "");
-	path->AddItem(*enemy2);
-	path->AddItem(*enemy3);
-	path->AddItem(*snipper);
+	Weapond* snipper = new Weapond("snipper", "rifle with scoop", true, 80, 120, 80, "5.56mm");
+	mountain->AddItem(*enemy2);
+	mountain->AddItem(*enemy3);
+	mountain->AddItem(*snipper);
 
 	vector<Place*> placesZoneB;
 	placesZoneB.push_back(meadow);
@@ -72,8 +72,8 @@ World::World()
 	training->AddItem(*enemy7);
 
 	vector<Place*> placesZoneD;
-	placesZoneB.push_back(entrace);
-	placesZoneB.push_back(training);
+	placesZoneD.push_back(entrace);
+	placesZoneD.push_back(training);
 
 	Place* camp = new Place("camp", "green camp", "you are in in the green camp", 0, true);
 	Ncp* enemy8 = new Ncp("austin", "Crnel enemy", 10, WALKING);
@@ -92,16 +92,16 @@ World::World()
 	camp->AddItem(*enemy8);
 
 	vector<Place*> placesZoneC;
-	placesZoneB.push_back(camp);
+	placesZoneC.push_back(camp);
 
 	Place* room = new Place("room", "room with the enemy and the host", "The enemy have de host and you are quite!", 0, true);
 	Creature* host = new Creature("shara", "the host, you mast rescue", 50, SITTING);
 	Ncp* enemy9 = new Ncp("adolf", "captain enemy", 100, WALKING);
-	camp->AddItem(*enemy9);
-	camp->AddItem(*host);
+	room->AddItem(*enemy9);
+	room->AddItem(*host);
 
 	vector<Place*> placesHouse;
-	placesZoneB.push_back(room);
+	placesHouse.push_back(room);
 
 	Room* zoneA = new Room("Zone A", "The area to the south", placesZoneA, 0);
 	Room* zoneB = new Room("Zone B", "The area to the east", placesZoneB, 0);
@@ -114,8 +114,8 @@ World::World()
 	airplane->AddItem(*exitPlane);
 
 	Exit* exitAToB = new Exit("east", "back to the forest you can see more", zoneB, "");
-	Exit* exitAToD = new Exit("nord", "in front you see the entrance", zoneC, "");
-	Exit* exitAToC = new Exit("west", "behin the lake same calm", zoneD, "");
+	Exit* exitAToD = new Exit("nord", "in front you see the entrance", zoneD, "");
+	Exit* exitAToC = new Exit("west", "behin the lake same calm", zoneC, "");
 	zoneA->AddItem(*exitAToB);
 	zoneA->AddItem(*exitAToD);
 	zoneA->AddItem(*exitAToC);

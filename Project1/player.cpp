@@ -95,7 +95,7 @@ void Player::Attack(const string& name)
 	bool nextStep = true;
 	if(equip)
 	{
-		if(((Weapond*) equip)->GetAmmo() <= 0)
+		if(((Weapond*)equip)->IsRemote() && ((Weapond*) equip)->GetAmmo() <= 0)
 		{
 			cout << "You don't have ammo for shoot with " << equip->GetName() << "!" << endl;
 			nextStep = false;
@@ -126,16 +126,16 @@ void Player::Reload()
 		if (((Weapond*)equip)->IsRemote())
 		{
 			list<Entity*>::iterator it = contains.begin();
-			for (int i = 0; i < contains.size(); ++i)
+
+			while(it != contains.end())
 			{
-				if(!(*it)->GetName().compare(((Weapond*)equip)->GetTypeAmmo()))
+				if (!(*it)->GetName().compare(((Weapond*)equip)->GetTypeAmmo()))
 				{
-					Item* item = (Item*) GetEntity((*it)->GetName(), ITEM_TYPE);
+					Item* item = (Item*)GetEntity((*it)->GetName(), ITEM_TYPE);
 					equip->AddItem(*item);
-					RemoveItem((*it)->GetName());
-					++i;
+					it = contains.erase(it);
 				}
-				if(i <  contains.size())++it;
+				else ++it;
 			}
 		}
 	}
