@@ -59,7 +59,7 @@ World::World()
 	placesZoneB.push_back(meadow);
 	placesZoneB.push_back(mountain);
 
-	Place* entrace = new Place("entrace", "entrance with a stall house", "you are inside of hall", 0, true);
+	Place* entrace = new Place("entrace", "entrance with a stall control", "you are inside of stall", 0, true);
 	Ncp* enemy4 = new Ncp("derek", "security enemy", 30, WALKING);
 	Ncp* enemy5 = new Ncp("emil", "security enemy", 30, WALKING);
 	entrace->AddItem(*enemy4);
@@ -114,7 +114,7 @@ World::World()
 	airplane->AddItem(*exitPlane);
 
 	Exit* exitAToB = new Exit("east", "back to the forest you can see more", zoneB, "");
-	Exit* exitAToD = new Exit("nord", "in front you see the entrance", zoneD, "");
+	Exit* exitAToD = new Exit("north", "in front you see the entrance", zoneD, "");
 	Exit* exitAToC = new Exit("west", "behin the lake same calm", zoneC, "");
 	zoneA->AddItem(*exitAToB);
 	zoneA->AddItem(*exitAToD);
@@ -128,8 +128,8 @@ World::World()
 
 	Exit* exitDToA = new Exit("south", "come back and be a coward", zoneA, "");
 	Exit* exitDToHouse = new Exit("enter", "door to hause", house, "");
-	house->AddItem(*exitDToA);
-	house->AddItem(*exitDToHouse);
+	zoneD->AddItem(*exitDToA);
+	zoneD->AddItem(*exitDToHouse);
 
 	player = new Player("Bishop", "Coronel of SAS", 100, STANDING);
 	player->SetRoom(*airplane);

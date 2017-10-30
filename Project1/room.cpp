@@ -57,7 +57,7 @@ void Room::Look()
 	cout << endl << "There are: " << endl;
 	for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
 	{
-		if ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE || (*it)->GetType() == NCP_TYPE) {
+		if ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE || (*it)->GetType() == NCP_TYPE || (*it)->GetType() == CREATURE_TYPE) {
 			cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << endl;
 		}
 	}
@@ -191,7 +191,7 @@ bool Room::PlayerAttackTo(const string& name, Player& player)
 			else
 			{
 				enemy->Strike(dammage);
-				cout << "You atack to " << enemy->GetName() << " but failed!" << endl;
+				cout << "You attack to " << enemy->GetName() << " but failed!" << endl;
 				return true;
 			}
 		}
@@ -220,7 +220,7 @@ bool Room::PlayerAttackTo(const string& name, Player& player)
 				{
 					if(currentPlayerPlace != i)
 					{
-						cout << name << " is to far to atack with " << player.GetEquip()->GetName() << "!" << endl;
+						cout << name << " is to far to attack with " << player.GetEquip()->GetName() << "!" << endl;
 						return false;
 					}
 				}
@@ -234,7 +234,7 @@ bool Room::PlayerAttackTo(const string& name, Player& player)
 				else
 				{
 					enemy->Strike(dammage);
-					cout << "You atack to " << enemy->GetName() << " but failed!" << endl;
+					cout << "You attack to " << enemy->GetName() << " but failed!" << endl;
 					return true;
 				}
 			}

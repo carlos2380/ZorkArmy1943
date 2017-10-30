@@ -58,7 +58,7 @@ void Place::Look()
 	{
 		for (list<Entity*>::iterator it = contains.begin(); it != contains.end(); ++it)
 		{
-			if ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE || (*it)->GetType() == NCP_TYPE) {
+			if ((*it)->GetType() == ITEM_TYPE || (*it)->GetType() == WEAPOND_TYPE || (*it)->GetType() == NCP_TYPE || (*it)->GetType() == CREATURE_TYPE) {
 				cout << "\t" << (*it)->GetName() << ": " << (*it)->GetDescription() << " in " << GetName() << endl;
 			}
 		}
@@ -118,7 +118,8 @@ void Place::TurnAttackEnemies(Player& player)
 			{
 				int dammage = ((Ncp*)(*it))->GetDammageAttack();
 				player.Strike(dammage);
-				cout << (*it)->GetName() << " attack you! -" << dammage << " (" << player.GetHealth() << " points of life)" << endl;
+				if (dammage > 0) cout << (*it)->GetName() << " attack you! -" << dammage << " (" << player.GetHealth() << " points of life)" << endl;
+				else cout << (*it)->GetName() << " attack you but failed!" << endl;
 			}
 			else
 			{
